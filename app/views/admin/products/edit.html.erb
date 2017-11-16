@@ -1,0 +1,8 @@
+<h2>编辑商品</h2>
+<%= simple_form_for [:admin,@product] do |f| %>
+    <%= f.input :title,label: '商品名称' %>
+    <%= f.input :description,label: '商品描述' %>
+    <%= f.input :quantity,label: '商品数量' %>
+    <%= f.input :price,label: '商品价格' %>
+    <%= f.submit 'Submit',data: {disable_width: 'Submiting...'} %>
+<% end  %>

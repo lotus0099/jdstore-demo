@@ -1,0 +1,25 @@
+<h3>Product List</h3>
+<table class="table table-bordered">
+    <tr>
+        <td>#</td>
+        <td>品名</td>
+        <td>描述</td>
+        <td>库存</td>
+        <td>价格</td>
+        <td>选项</td>
+        <td>创建时间</td>
+    </tr>
+    <% @products.each do |product|  %>
+    <tr>
+
+            <td><%= product.title %></td>
+            <td><%= link_to(product.title,admin_product_path(product)) %></td>
+            <td><%= product.description %></td>
+            <td><%= product.quantity %></td>
+            <td><%= product.price %></td>
+            <td><%= link_to('edit',edit_admin_product_path(product),class: "btn-xs btn-primary") %>|<%= link_to('delete',admin_product_path(product),method: :delete,class: "btn-xs btn-danger") %></td>
+            <td><%= product.created_at %></td>
+
+    </tr>
+        <% end  %>
+</table>
