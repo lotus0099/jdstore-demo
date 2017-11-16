@@ -2,7 +2,7 @@ class Admin::ProductsController < ApplicationController
     layout "admin"
     before_action :authenticate_user!, only: %i[new edit update detroy]
     before_action :admin_required
-    
+
     def index
         @products = Product.all
     end
@@ -50,6 +50,6 @@ end
     private
 
     def product_params
-        params.require(:product).permit(:title, :description, :price, :quantity)
+        params.require(:product).permit(:title, :description, :price, :quantity,:image)
     end
 end

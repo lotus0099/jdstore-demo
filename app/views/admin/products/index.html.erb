@@ -1,17 +1,28 @@
-<h3>Product List</h3>
-<table class="table table-bordered">
-    <tr>
-        <td>#</td>
-        <td>品名</td>
-        <td>描述</td>
-        <td>库存</td>
-        <td>价格</td>
-        <td>选项</td>
-        <td>创建时间</td>
-    </tr>
-    <% @products.each do |product|  %>
-    <tr>
-
+<div class="row">
+    <div class="col-md-2">
+        <ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+            <li class="active">
+                <%= link_to("Products", admin_products_path) %>
+            </li>
+            <li class="">
+                <%= link_to("Add product", new_admin_product_path) %>
+            </li>
+        </ul>
+    </div>
+    <div class="col-md-10">
+        <h3>Product List</h3>
+        <table class="table table-bordered">
+        <tr>
+            <td>#</td>
+            <td>品名</td>
+            <td>描述</td>
+            <td>库存</td>
+            <td>价格</td>
+            <td>选项</td>
+            <td>创建时间</td>
+        </tr>
+        <% @products.each do |product|  %>
+        <tr>
             <td><%= product.title %></td>
             <td><%= link_to(product.title,admin_product_path(product)) %></td>
             <td><%= product.description %></td>
@@ -20,6 +31,8 @@
             <td><%= link_to('edit',edit_admin_product_path(product),class: "btn-xs btn-primary") %>|<%= link_to('delete',admin_product_path(product),method: :delete,class: "btn-xs btn-danger") %></td>
             <td><%= product.created_at %></td>
 
-    </tr>
-        <% end  %>
-</table>
+            </tr>
+            <% end  %>
+        </table>
+    </div>
+</div>

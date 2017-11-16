@@ -4,5 +4,6 @@
     <%= f.input :description,label: '商品描述' %>
     <%= f.input :quantity,label: '商品数量' %>
     <%= f.input :price,label: '商品价格' %>
+    <%= f.input :image,as: :file%>
     <%= f.submit 'Submit',data: {disable_width: 'Submiting...'} %>
 <% end  %>
