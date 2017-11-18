@@ -12,4 +12,27 @@ class Admin::OrdersController < ApplicationController
  def admin_required
      redirect_to '/', alert: 'You are not admin.' unless current_user.admin?
  end
+ def ship
+ @order = Order.find(params[:id])
+ @order.ship!
+ redirect_to :back
+end
+
+def shipped
+ @order = Order.find(params[:id])
+ @order.deliver!
+ redirect_to :back
+end
+
+def cancel
+ @order = Order.find(params[:id])
+ @order.cancel_order!
+ redirect_to :back
+end
+
+def return
+ @order = Order.find(params[:id])
+ @order.return_good!
+ redirect_to :back
+end
 end
