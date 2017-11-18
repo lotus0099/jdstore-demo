@@ -27,7 +27,9 @@
                 </td>
                 <td><%= product.title %></td>
                 <td><%= product.price %></td>
-                <td><%= link_to('edit',edit_admin_product_path(product),class: "btn-xs btn-primary") %>|<%= link_to('delete',admin_product_path(product),method: :delete,class: "btn-xs btn-danger") %></td>
+                <td><%= link_to('edit',edit_admin_product_path(product),class: "btn-xs btn-primary") %>|<%= link_to('delete',admin_product_path(product),method: :delete,class: "btn-xs btn-danger") %>
+                    <%= link_to "向上", move_up_admin_product_path(product), method: :patch %>
+                    <%= link_to "向下", move_down_admin_product_path(product), method: :patch %></td>
                 <td><%= product.created_at %></td>
 
             </tr>

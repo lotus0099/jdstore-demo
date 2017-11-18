@@ -4,7 +4,7 @@ class Admin::ProductsController < ApplicationController
     before_action :admin_required
 
     def index
-        @products = Product.all
+        @products = Product.all.order('position ASC')
     end
 
     def show
@@ -45,7 +45,18 @@ class Admin::ProductsController < ApplicationController
 
     def admin_required
         redirect_to '/', alert: 'You are not admin.' unless current_user.admin?
-end
+    end
+
+    def move_up
+        @product = Product.find(params[:id])
+        @product.move_higher
+        redirect_to :back
+    end
+    def move_down
+        @product = Product.find(params[:id])
+        @product.move_lower
+        redirect_to :back
+    end
 
     private
 
