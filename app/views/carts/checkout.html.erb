@@ -38,17 +38,10 @@
        总计 <%= render_cart_total_price(current_cart) %> CNY
      </span>
    </div>
-
    <hr>
-
    <h2> 订单资讯 </h2>
-
     <div class="order-form">
-
       <%= simple_form_for @order do |f| %>
-
-
-
           <legend> 订购人</legend>
           <div class="form-group col-lg-6">
             <%= f.input :billing_name  %>
