@@ -37,6 +37,9 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'acts_as_list'
 gem 'aasm'
+gem 'ransack'
+gem 'will_paginate'
+gem 'will_paginate-bootstrap'
 gem 'letter_opener', group: :development
 gem 'figaro'
 group :development, :test do
