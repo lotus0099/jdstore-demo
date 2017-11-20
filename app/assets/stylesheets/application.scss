@@ -36,7 +36,6 @@ body {
     }
     /*===== 頁面內容設定 ======*/
     .container-fluid {
-
         min-height: 550px;
     }
     /*===== 換頁按鈕設定 ======*/
@@ -118,28 +117,33 @@ body {
     }
 }
 /*===== Navbar 导览列 ======*/
-.navbar .navbar-nav{
-    li>a{
-        color:#fff;
+.navbar .navbar-nav {
+    li > a {
+        color: #fff;
     }
 }
-.navbar .navbar-header{
+
+.navbar .navbar-header {
     height: 60px;
 }
+
 .navbar .navbar-header > a {
     height: 60px;
+}
 
+.navbar .top-nav {
+    height: 60px;
 }
-.navbar .top-nav{
-    height:60px;
-}
+
 .navbar.navbar-default {
     background: rgba(0,0,0,0.3);
     color: #000 !important;
     height: 60px;
-    a{
-        color:#fff;
+
+    a {
+        color: #fff;
     }
+
     a:active,
     a:focus,
     a:hover {
@@ -156,10 +160,11 @@ body {
         /* Google字型 */
         font-size: 20px;
         padding: 0;
-        line-height:60px;
+        line-height: 60px;
+
         img {
             display: inline-block;
-            maring:5px 8px 0 30px;
+            maring: 5px 8px 0 30px;
             width: 45px;
             height: 50px;
         }
@@ -196,7 +201,7 @@ body {
 
         input {
             height: 35px;
-            border:2px solid #eee;
+            border: 2px solid #eee;
         }
 
         input:focus {
@@ -295,56 +300,168 @@ body {
 }
 /*===== Intro 首页-网站介绍 =====*/
 .intro-box {
+    /*===== 轮播内容 =====*/
+    .item {
+        h3 {
+            color: #fff;
+            font-size: 50px;
+            font-weight: 700;
+            letter-spacing: 5px;
+            text-shadow: 1px 1px 3px #333;
+        }
 
-  /*===== 轮播内容 =====*/
-  .item {
+        p {
+            color: #f8f8f8;
+            font-size: 22px;
+            font-style: italic;
+        }
+
+        img {
+            width: 100%;
+        }
+    }
+    /*===== 换页按钮 =====*/
+    .carousel-control {
+        span {
+            margin-top: 145%;
+            font-size: 50px;
+        }
+    }
+}
+/*===== Story 首页-品牌故事 =====*/
+.story-box {
+    text-align: center;
+    padding: 25px 62.5px 50px;
+    h1{
+        margin-bottom: 30px;
+    }
     h3 {
-      color: #fff;
-      font-size: 50px;
-      font-weight: 700;
-      letter-spacing: 5px;
-      margin-top: -35%;
-      text-shadow: 1px 1px 3px #333;
+        font-size: 20px;
+        text-align: left;
     }
 
     p {
-      color: #f8f8f8;
-      font-size: 22px;
-      font-style: italic;
+        color: #666;
+        line-height: 30px;
+        text-align: justify;
     }
 
     img {
-      width: 100%;
-      height: 36%;
+        width: 150px;
+        border-radius: 50%;
     }
-  }
+}
+/*===== Categories 首页-商品分类 =====*/
+.categories-box {
+    background-color: #F5F5F5;
+    text-align: center;
+    a {
+        text-decoration: none;
+        color: #002E2E;
+    }
+    img {
+        width: 250px;
+    }
+    /*===== Content 分类內容 =====*/
+    .category-content {
+        padding: 30px 0 0;
+        border-right: 2.5px dashed #ccc;
+        /*===== Box 分类图片 =====*/
+        h3 {
+            padding: 5px 0;
+            font-weight: 700;
+            font-size: 18px;
+        }
 
-  /*===== 换页按钮 =====*/
-  .carousel-control {
-    span {
-      margin-top: 145%;
-      font-size: 50px;
+        p {
+            text-align: justify;
+            letter-spacing: 1.5px;
+            padding: 0 62.5px 30px;
+            color: #666;
+            line-height: 26px;
+        }
     }
-  }
 }
 
-/*===== Button 按钮 =====*/
-.goTop {
-    height: 35px;
-    width: 35px;
-    background-color: #fff;
-    border-radius: 5px;
-    position: fixed;
-    top: 80%;
-    right: 35px;
-    // display: none;
-    box-shadow: 1px 1px 3px #666;
 
-    span {
-      color: #000;
-      position: absolute;
-      top: 7px;
-      left: 8px;
-      font-size: 20px;
+/*===== Push 首页-立即购买 =====*/
+.push-box {
+  text-align: center;
+  padding: 75px 0 0 0;
+  height: 200px;
+  background: image_url("start.jpg") no-repeat scroll top center/ cover;
+}
+/*===== 首页通用设置 =====*/
+.welcome-box {
+    h2 {
+        font-size: 24px;
+        font-weight: 600;
     }
-  }
+
+    .short-line {
+        background: #eb5424;
+        margin: 25px auto 35px;
+        width: 500px;
+        height: 2px;
+    }
+    /*===== Button 按钮 =====*/
+    .btn-push {
+        background-color: transparent;
+        color: #fff;
+        border-color: #fff;
+        padding: 10px 20px;
+        font-size: 20px;
+    }
+
+    .btn-intro {
+        background-color: transparent;
+        color: #fff;
+        border-color: #fff;
+        padding: 10px 20px;
+        font-size: 20px;
+    }
+
+    .btn-intro:hover,
+    .btn-push:hover {
+        background-color: rgba(235, 84, 36, 0.5);
+        border-color: #eb5424;
+        color: rgba(255, 255, 255, 0.9);
+    }
+
+    .btn-intro,
+    .btn-push {
+        -webkit-transition: all 0.4s ease-in-out;
+        -moz-transition: all 0.4s ease-in-out;
+        -ms-transition: all 0.4s ease-in-out;
+        -o-transition: all 0.4s ease-in-out;
+        transition: all 0.4s ease-in-out;
+    }
+
+    .goTop {
+        height: 35px;
+        width: 35px;
+        background-color: #fff;
+        border-radius: 5px;
+        position: fixed;
+        top: 80%;
+        right: 35px;
+        // display: none;
+        box-shadow: 1px 1px 3px #666;
+
+        span {
+            color: #000;
+            position: absolute;
+            top: 7px;
+            left: 8px;
+            font-size: 20px;
+        }
+    }
+
+    .goTop:hover {
+        background-color: #f0f0f0;
+
+        span {
+            color: #eb5424;
+        }
+    }
+}

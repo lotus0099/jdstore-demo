@@ -12,26 +12,25 @@
           </ol> -->
 
                     <!--===== 輪播內容 =====-->
-                    <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                        <div class="carousel-inner" role="listbox">
-                            <div class="item active">
-                                <%= image_tag 'banner1.jpg',class: 'd-block img-fluid' %>
-                                <div class="carousel-caption">
-                                    <h3></h3>
-                                    <p></p>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <%= image_tag 'banner2.jpg',class: 'd-block img-fluid' %>
-                            </div>
-                            <div class="item">
-                                <%= image_tag 'banner3.jpg',class: 'd-block img-fluid' %>
-                            </div>
-                            <div class="item">
-                                <%= image_tag 'banner4.jpg',class: 'd-block img-fluid' %>
-                            </div>
-                        </div>
+                    <div class="carousel-inner" role="listbox">
 
+                        <% @intros.each_with_index do |intro,index| %>
+                        <% if index == 0 %>
+
+                        <div class="item active">
+                        <% else %>
+                            <div class="item">
+                                <% end %>
+                                <%= link_to intro.link, target: "_blank" do %>
+                                <%= image_tag(intro.image) %>
+                                <div class="carousel-caption">
+                                    <h3><%= intro.title %></h3>
+                                    <p><%= intro.content %></p>
+                                </div>
+                                <% end %>
+                            </div>
+                            <% end %>
+                        </div>
                         <!--===== 換頁按鈕 =====-->
                         <a class="left carousel-control" href="#intro" role="button" data-slide="prev">
                             <span class="fa fa-angle-left" aria-hidden="true"></span>
@@ -44,40 +43,31 @@
                     </div>
                 </div>
             </div>
-        </section>
+    </section>
 
         <!--===== 品牌故事 =====-->
-        <!-- <section class="story-box">
+         <section class="story-box">
             <div class="row">
                 <div class="col-md-10 col-md-offset-1">
-                    <h2><%= t('th-j-and-a-select') %></h2>
-                    <h1><%= t('th-j-and-a') %></h1>
+                    <h1>甄选家－重新定义高质量生活</h1>
+                    <h2>在这里，人人都是生活家。</h2>
                     <div class="short-line"></div>
                     <div class="row">
                         <div class="col-md-3 col-md-offset-1">
-                            <%= image_tag("jimmy.jpg") %>
+                            <%= image_tag("lotus.jpg") %>
                         </div>
                         <div class="col-md-7">
-                            <h3><%= t('th-jimmy') %></h3>
-                            <p><%= t('about-jimmy') %></p>
+                            <h3>Louts</h3>
+                            <p>理工直男一枚，时刻关注能提升生活质量的单品。提供的选物没有浮夸的设计与机能，注重物品的本质与材料，每一项推荐的单品都亲身试用，虽种类不多，但必属精品。</p>
                         </div>
                     </div>
-                    <hr/>
-                    <div class="row">
-                        <div class="col-md-7 col-md-offset-1">
-                            <h3><%= t('th-anndo') %></h3>
-                            <p><%= t('about-anndo') %></p>
-                        </div>
-                        <div class="col-md-3">
-                            <%= image_tag("anndo.jpg") %>
-                        </div>
-                    </div>
+
                 </div>
             </div>
-        </section> -->
+        </section>
 
         <!--===== 商品類型 =====-->
-        <!-- <section class="categories-box">
+         <section class="categories-box">
             <div class="row">
                 <div class="col-md-4 category-content">
                     <%= link_to '#' , class: "category_1" do %>
@@ -85,8 +75,8 @@
                         <%= image_tag("category_1.jpg") %>
                     </div>
                     <div>
-                        <h3><%= t('th-desk') %></h3>
-                        <p><%= t('slogan-desk') %></p>
+                        <h3>日常文具</h3>
+                        <p>文具用品与生活紧密的程度，其实超乎想像。甄选家 贯彻「讲究生活里细微的美好」的选物职人精神，为你搜罗来自全世界各地的梦幻逸品，用文具改变你的桌上风景。</p>
                     </div>
                     <% end %>
                 </div>
@@ -96,8 +86,8 @@
                         <%= image_tag("category_2.jpg") %>
                     </div>
                     <div>
-                        <h3><%= t('th-home') %></h3>
-                        <p><%= t('slogan-home') %></p>
+                        <h3>生活器物</h3>
+                        <p>生活道具，正是生活中的主角。 甄选家以「促进美好生活」为中心，思考着每天的生活，严选简朴、值得信赖的日常物件，帮器物与寻找生活品味的人，制造一个邂逅的机会。</p>
                     </div>
                     <% end %>
                 </div>
@@ -107,13 +97,13 @@
                         <%= image_tag("category_3.jpg") %>
                     </div>
                     <div>
-                        <h3><%= t('th-accessories') %></h3>
-                        <p><%= t('slogan-accessories') %></p>
+                        <h3>个人单品</h3>
+                        <p>个人配件，是一种态度的展现。好东西不用多，几个设计出众、容易搭配的物品，便可以陪伴我们很久，带给我们满足、自信。甄选家 诚挚挑选的高质感单品，必然会让你爱不释手。</p>
                     </div>
                     <% end %>
                 </div>
             </div>
-        </section> -->
+        </section>
         <!--===== 推薦商品 =====-->
         <!-- <section class="show-box">
             <div class="row">
@@ -182,7 +172,7 @@
 
         <!--===== 立即購買 =====-->
         <section class="push-box">
-            <%= link_to(t('btn-buy-now'), products_path, class:'btn btn-push' ) %>
+            <%= link_to('立即选购', products_path, class:'btn btn-push' ) %>
         </section>
 
         <!--===== Go top（回到頂端） =====-->
