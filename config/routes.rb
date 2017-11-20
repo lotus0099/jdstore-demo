@@ -16,6 +16,7 @@ Rails.application.routes.draw do
                 post :return
             end
         end
+        resources :categories
     end
     resources :products do
         member do
@@ -44,5 +45,5 @@ Rails.application.routes.draw do
         resources :orders
     end
 
-    root 'products#index'
+    root 'welcomes#index'
 end

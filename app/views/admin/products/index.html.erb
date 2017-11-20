@@ -8,6 +8,7 @@
             <tr>
                 <td>#</td>
                 <td>产品图</td>
+                <td>产品类别</td>
                 <td>产品名称</td>
                 <td>产品价格</td>
                 <td>操作选项</td>
@@ -25,6 +26,9 @@
                     <% end %>
                     <% end %>
                 </td>
+
+        
+
                 <td><%= product.title %></td>
                 <td><%= product.price %></td>
                 <td><%= link_to('edit',edit_admin_product_path(product),class: "btn-xs btn-primary") %>|<%= link_to('delete',admin_product_path(product),method: :delete,class: "btn-xs btn-danger") %>

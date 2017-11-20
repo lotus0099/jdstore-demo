@@ -36,7 +36,7 @@ body {
     }
     /*===== 頁面內容設定 ======*/
     .container-fluid {
-        margin-top: 55px;
+
         min-height: 550px;
     }
     /*===== 換頁按鈕設定 ======*/
@@ -123,11 +123,16 @@ body {
         color:#fff;
     }
 }
+.navbar .navbar-header{
+    height: 60px;
+}
 .navbar .navbar-header > a {
     height: 60px;
-    margin-top: 5px;
-}
 
+}
+.navbar .top-nav{
+    height:60px;
+}
 .navbar.navbar-default {
     background: rgba(0,0,0,0.3);
     color: #000 !important;
@@ -146,17 +151,16 @@ body {
     }
     /*===== Logo ======*/
     .logo-box {
-        margin:5px 15px 0 0;
+        margin-right: 15px;
         font-family: 'Oswald', sans-serif;
         /* Google字型 */
         font-size: 20px;
         padding: 0;
+        line-height:60px;
         img {
             display: inline-block;
-
-            margin-right: 8px;
-            margin-left: 30px;
-            width: 40px;
+            maring:5px 8px 0 30px;
+            width: 45px;
             height: 50px;
         }
     }
@@ -289,3 +293,58 @@ body {
         }
     }
 }
+/*===== Intro 首页-网站介绍 =====*/
+.intro-box {
+
+  /*===== 轮播内容 =====*/
+  .item {
+    h3 {
+      color: #fff;
+      font-size: 50px;
+      font-weight: 700;
+      letter-spacing: 5px;
+      margin-top: -35%;
+      text-shadow: 1px 1px 3px #333;
+    }
+
+    p {
+      color: #f8f8f8;
+      font-size: 22px;
+      font-style: italic;
+    }
+
+    img {
+      width: 100%;
+      height: 36%;
+    }
+  }
+
+  /*===== 换页按钮 =====*/
+  .carousel-control {
+    span {
+      margin-top: 145%;
+      font-size: 50px;
+    }
+  }
+}
+
+/*===== Button 按钮 =====*/
+.goTop {
+    height: 35px;
+    width: 35px;
+    background-color: #fff;
+    border-radius: 5px;
+    position: fixed;
+    top: 80%;
+    right: 35px;
+    // display: none;
+    box-shadow: 1px 1px 3px #666;
+
+    span {
+      color: #000;
+      position: absolute;
+      top: 7px;
+      left: 8px;
+      font-size: 20px;
+    }
+  }

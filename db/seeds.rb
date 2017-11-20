@@ -17,3 +17,11 @@
 #     puts 'Admin 已经建立过了，脚本跳过该步骤。'
 # end
 # Initialize Product
+Category.create!(
+    id: 2,
+    name: '数码产品'
+  )
+  Category.create!(
+      id: 3,
+      name: '日用品'
+    )
