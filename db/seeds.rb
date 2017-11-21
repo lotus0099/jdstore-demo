@@ -27,6 +27,22 @@ if User.find_by(email: 'lvdeshi2011@163.com').nil?
 else
     puts '已創建過此帳號，不重複新增。'
  end
+ 
+ # 新增類型  Category #
+   CategoryGroup.create!(
+     name: '日常文具'
+   )
+
+   CategoryGroup.create!(
+     name: '生活器物'
+   )
+
+   CategoryGroup.create!(
+     name: '個人單品'
+   )
+
+   puts '創建類型*3：日常文具、生活器物、個人單品'
+
 
     # 新增廣告  Intro #
 
