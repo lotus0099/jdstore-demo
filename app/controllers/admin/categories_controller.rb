@@ -66,7 +66,7 @@ class Admin::CategoriesController < ApplicationController
     end
     private
     def category_params
-        params.require(:category).permit(:name)
+        params.require(:category).permit(:name, :category_group_id, :is_hidden)
     end
 
 end

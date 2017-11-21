@@ -11,6 +11,7 @@
             <thead>
                 <tr>
                     <th>分类组名</th>
+
                     <th class="pull-right">操作</th>
                 </tr>
             </thead>
@@ -41,14 +42,14 @@
             <!--=== 頁面標題 ===-->
             <h2>细分类一览</h2>
             <div class="pull-right">
-                <%= link_to(t('btn-category-new'), new_admin_category_path, :class => 'btn btn-md btn-info')%>
+                <%= link_to('新增细分类', new_admin_category_path, :class => 'btn btn-md btn-info')%>
             </div>
             <table class="table">
                 <thead>
                     <tr>
                         <th>分类组名</th>
-                        <th>细分类名称</th>
-                        <th class="pull-right">新增细分类</th>
+                        <th>细分名称</th>
+                        <th class="pull-right">操作</th>
                     </tr>
                 </thead>
                 <tbody>

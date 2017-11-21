@@ -15,7 +15,7 @@ class Admin::CategoryGroupsController < ApplicationController
     def create
         @category_group = CategoryGroup.new(category_group_params)
         if @category_group.save
-            redirect_to admin_category_groups_path
+            redirect_to admin_categories_path
         else
             render :new
         end
@@ -26,9 +26,9 @@ class Admin::CategoryGroupsController < ApplicationController
     def update
         @category_group = CategoryGroup.find(params[:id])
         if @category_group.update(category_group_params)
-            redirect_to admin_category_groups_path
+            redirect_to admin_categories_path
         else
-            render :new
+            render :edit
         end
     end
     def publish

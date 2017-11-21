@@ -1,13 +1,13 @@
-<h1>编辑分类</h1>
 
-<%= simple_form_for [:admin, @category] do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :name %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+<div class="col-md-8 col-md-offset-2 admin-data-box">
+    <h1>修改分类</h1>
+  <hr style="size:2px" />
+  <%= simple_form_for [:admin, @category] do |f| %>
+    <%= f.input :category_group_id, :label => '商品類型', :collection => @category_groups, input_html: { class: 'width-50' } %>
+    <%= f.input :name, :label => '分類名稱' %>
+    <span class="hidden-box"><%= f.input :is_hidden, :label => '隐藏' %></span>
+    <div class="form-actions">
+      <%= f.submit '确认修改', class: 'btn btn-md btn-default' %>
+    </div>
+  <% end %>
+</div>

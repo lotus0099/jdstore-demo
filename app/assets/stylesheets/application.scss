@@ -499,6 +499,7 @@ body {
 
   table{
     box-shadow: 0 0 3px #999;
+
   }
 
   thead{
@@ -509,14 +510,25 @@ body {
 
   tr {
     border: 1px solid #ccc;
+
+    td {
+      border-top: none!important;
+    }
   }
+  th {
+    border: none!important;
+
+  }
+  td {
+    border: none!important;
+}
   h2 {
       text-align: center;
       margin-top: 35px;
     }
 
     a {
-      color: #eee;
+      color: #666;
     }
 
     a:hover,
