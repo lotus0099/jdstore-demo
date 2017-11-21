@@ -41,6 +41,9 @@ class Admin::CategoryGroupsController < ApplicationController
         @category_group.hide!
         redirect_to :back
     end
+    def admin_required
+        redirect_to '/', alert: 'You are not admin.' unless current_user.admin?
+    end
     private
     def category_group_params
     params.require(:category_group).permit(:name, :is_hidden, :description, :logo, :image)

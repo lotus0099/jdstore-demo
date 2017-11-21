@@ -36,6 +36,7 @@ body {
     }
     /*===== 頁面內容設定 ======*/
     .container-fluid {
+        margin-top:60px;
         min-height: 550px;
     }
     /*===== 換頁按鈕設定 ======*/
@@ -463,5 +464,68 @@ body {
         span {
             color: #eb5424;
         }
+    }
+}
+
+
+
+
+/*===== Control 後台-控制選單 =====*/
+.nav-sidebar {
+  margin-top: 65px;
+
+  span {
+    margin-left: 2.5px;
+  }
+
+  li {
+    max-width: 250px;
+    padding: 12.5px 15px 12.5px 15px;
+    background-color: #546270;
+    border: 1px solid #4a4a4a;
+  }
+
+  a {
+    color: #fff;
+  }
+
+  a:hover {
+    color: #44c7f4;
+  }
+}
+/*===== Admin 後台-通用設置 =====*/
+.admin-box {
+  padding: 25px;
+
+  table{
+    box-shadow: 0 0 3px #999;
+  }
+
+  thead{
+    background-color: #02061A;
+    font-size: 16px;
+    color: #fff;
+  }
+
+  tr {
+    border: 1px solid #ccc;
+  }
+  h2 {
+      text-align: center;
+      margin-top: 35px;
+    }
+
+    a {
+      color: #eee;
+    }
+
+    a:hover,
+    a:active,
+    a:focus {
+      color: #44c7f4;
+    }
+
+    .description-box {
+      max-width: 550px;
     }
 }

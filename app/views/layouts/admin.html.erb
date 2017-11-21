@@ -15,17 +15,25 @@
             </div>
             <div class="row">
                 <div class="col-md-2 nav-sidebar">
-                    <ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
-                        <li>
-                            <%= link_to("Products", admin_products_path) %>
-                        </li>
-                        <li>
-                            <%= link_to("Orders", admin_orders_path) %>
-                        </li>
-                        <li> <%= link_to("Categories", admin_categories_path) %></li>
-                        <li>
-                            <%= link_to('admin-homepage',admin_intros_path,class: "fa fa-film") %>
-                        </li>
+                    <ul class="list-unstyled">
+                        <!-- 商品管理 -->
+                        <li><%= link_to admin_products_path do %>
+                            <span class="fa fa-cube"></span>
+                            <span>商品管理</span><% end %></li>
+                        <!-- 品牌管理 -->
+                    
+                        <!-- 分類管理 -->
+                        <li><%= link_to admin_categories_path do %>
+                            <span class="fa fa-cubes"></span>
+                            <span>分類管理</span><% end %></li>
+                        <!-- 訂單管理 -->
+                        <li><%= link_to admin_orders_path do %>
+                            <span class="fa fa-th-list"></span>
+                            <span> 訂單管理</span><% end %></li>
+                        <!-- 首頁廣告管理 -->
+                        <li><%= link_to admin_intros_path do %>
+                            <span class="fa fa-film"></span>
+                            <span>首頁廣告管理</span><% end %></li>
                     </ul>
                 </div>
                 <div class="col-md-10 admin-box">
@@ -33,6 +41,6 @@
                 </div>
             </div>
         </div>
-         <%= render "common/footer" %>
+        <%= render "common/footer" %>
     </body>
 </html>

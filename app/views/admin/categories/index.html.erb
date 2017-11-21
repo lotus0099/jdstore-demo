@@ -1,28 +1,83 @@
-<h2> 分类列表 </h2>
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        <!--=== 頁面標題 ===-->
+        <h2>分类列表组</h2>
+        <!--=== 新增类型组 ===-->
+        <div class="pull-right">
+            <%= link_to '新增分类组', new_admin_category_group_path, class: 'btn btn-info'%>
+        </div>
+        <!--===类型列表 ===-->
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>分类组名</th>
+                    <th class="pull-right">操作</th>
+                </tr>
+            </thead>
 
-<div class="pull-right">
-  <%= link_to '新的分类', new_admin_category_path, class: 'btn btn-primary'%>
-</div>
+            <tbody>
+                <% @category_groups.each do |category_group| %>
+                <tr>
+                    <td><%= render_category_group_status(category_group) %>
+                        <%= category_group.name %></td>
+                    <td class="action-box pull-right">
+                        <%= link_to(edit_admin_category_group_path(category_group), class: "btn btn-md btn-default") do %>
+                        <span class="fa fa-pencil"></span>
+                        <% end %>
+                        <!-- 发布 / 隐藏 -->
+                        <% if category_group.is_hidden %>
+                        <%= link_to(publish_admin_category_group_path(category_group), :method => :post, class: "btn btn-md btn-default show-btn") do %>
+                        <span class="fa fa-eye"></span>
+                        <% end %>
+                    <% else %>
+                        <%= link_to(hide_admin_category_group_path(category_group), :method => :post, data: { confirm: "確定隱藏該類型？" }, class: "btn btn-md btn-default") do %>
+                        <span class="fa fa-eye-slash"></span>
+                        <% end %>
+                        <% end %>
+                    </td>
+                </tr>
+                <% end %>
+            </table>
+            <!--=== 頁面標題 ===-->
+            <h2>细分类一览</h2>
+            <div class="pull-right">
+                <%= link_to(t('btn-category-new'), new_admin_category_path, :class => 'btn btn-md btn-info')%>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>分类组名</th>
+                        <th>细分类名称</th>
+                        <th class="pull-right">新增细分类</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @categories.each do |category| %>
+                    <tr>
+                        <td><%= render_category_status(category) %>
+                            <%= category.category_group.name if category.category_group %></td>
+                        <td><%= link_to(category.name, admin_category_path(category)) %></td>
+                        <!--=== 操作選項 ===-->
+                        <td class="action-box pull-right">
+                            <%= link_to(edit_admin_category_path(category), class: "btn btn-md btn-default") do %>
+                            <span class="fa fa-pencil"></span>
+                            <% end %>
 
-<table class="table table-bordered">
-  <thead>
-    <tr>
-      <th>#</th>
-
-      <th>名称</th>
-      <th colspan="2">设置</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @categories.each do |category| %>
-    <tr>
-      <td><%= category.id %></td>
-      <td><%= category.name%></td>
-      <td><%= link_to '编辑',edit_admin_category_path(category)%></td>
-      <td><%= link_to '删除',admin_category_path(category),method: :delete, data: {confirm: '你确定要删除吗'}%></td>
-    </tr>
-    <% end %>
-
-  </tbody>
-</table>
+                            <!-- 發佈 / 隱藏 -->
+                            <!-- <%= render_category_publish_or_hide(category) %> -->
+                            <% if category.is_hidden %>
+                            <%= link_to(publish_admin_category_path(category), :method => :post, class: "btn btn-md btn-default show-btn") do %>
+                            <span class="fa fa-eye"></span>
+                            <% end %>
+                        <% else %>
+                            <%= link_to(hide_admin_category_path(category), :method => :post, data: { confirm: "確定隱藏該分類？" }, class: "btn btn-md btn-default") do %>
+                            <span class="fa fa-eye-slash"></span>
+                            <% end %>
+                            <% end %>
+                        </td>
+                    </tr>
+                    <% end %>
+                </tbody>
+            </table>
+        </div>
+    </div>
