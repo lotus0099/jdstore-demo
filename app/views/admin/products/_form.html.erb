@@ -1,11 +1,20 @@
 <div class="col-md-10 col-md-offset-1 admin-data-box">
     <hr style="size:2px"/>
+    <!-- 显示商品图片 -->
+
     <%= simple_form_for [:admin, @product] do |f| %>
+    <div class='group'>
+        <% if @product.image.present? %>
+        <%= image_tag(@product.image.thumb.url,class: "thumbnail") %>
+    <% else %>
+        <%= image_tag('http://placehold.it/200x200&text=No Pic',class: "thumbnail") %>
+        <% end %>
+    </div>
     <!-- 上传图片 -->
     <%= f.label '商品图片' %><br>
-    <%= f.file_field :product_image, :multiple => true, name: 'product_images[image][]' %>
+    <%= f.file_field :image, as: :file %>
     <!-- 商品名称 -->
-    <%= f.input :title, :label => t('f-product-name'), input_html: { class: 'width-50' } %>
+    <%= f.input :title, :label => '商品名称', input_html: { class: 'width-50' } %>
     <!-- 选择分类 -->
     <%= f.input :category_id, :label => '商品分类', :collection => @categories, :checked => @product.category, input_html: { class: 'width-50' } %>
     <!-- <%= select_tag(:category_id, options_for_select(@categories), :prompt => "Category") %> -->
@@ -20,7 +29,7 @@
     <!-- 商品隱藏與否 -->
     <span class="hidden-box"><%= f.input :is_hidden, :label => t('f-hide') %></span>
     <div class="form-actions">
-        <%= f.submit t('f-submit'), class: 'btn btn-md btn-default' %>
+        <%= f.submit '确认提交', class: 'btn btn-md btn-default' %>
     </div>
 
     <% end %>
