@@ -1,9 +1,18 @@
+<div class="product-box">
+  <div class="container">
+    
+    <%= render "products/menu" %>
+     <% if @products.length > 0 %>
 
 <div class="row">
-    <% @products.each do |product| %>
-    <div class="col-xs-6 col-md-3">
+
+    <% @products.each_with_index do |product, index| %>
+    <div class="col-xs-12 col-sm-4 col-md-3 product-content">
          <%= link_to product_path(product) do %>
+         <!-- 商品圖片 -->
         <% if product.image.present? %>
+
+
             <%= image_tag(product.image.thumb.url,class: "thumbnail") %>
         <% else %>
             <%= image_tag('http://placehold.it/200x200&text=No Pic',class: "thumbnail") %>
@@ -13,4 +22,13 @@
         ￥ <%= product.price %>
     </div>
     <% end %>
+    </div>
+    <% else %>
+   <div class="product-content">
+     <h2><%= (t('no-product-data')) %></h2>
+   </div>
+ <% end %>
+    <div class="page-box">
+  <%= will_paginate @products, renderer: BootstrapPagination::Rails, :previous_label => t('previous-label'), :next_label => t('next-label') %>
+</div>
 </div>

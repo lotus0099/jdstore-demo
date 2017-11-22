@@ -1,14 +1,27 @@
-<%= simple_form_for [:admin, @product] do |f| %>
-  <div class="form-product">
-    <%= f.input :title %>
-    <%= f.input :description %>
-    <%= select_tag(:category_id, options_for_select(@categories), :prompt => "Category") %>
-    <%= f.input :quantity %>
-    <%= f.input :price %>
-    <%= f.input :image, as: :file, label: "详情图" %>
+<div class="col-md-10 col-md-offset-1 admin-data-box">
+    <hr style="size:2px"/>
+    <%= simple_form_for [:admin, @product] do |f| %>
+    <!-- 上传图片 -->
+    <%= f.label '商品图片' %><br>
+    <%= f.file_field :product_image, :multiple => true, name: 'product_images[image][]' %>
+    <!-- 商品名称 -->
+    <%= f.input :title, :label => t('f-product-name'), input_html: { class: 'width-50' } %>
+    <!-- 选择分类 -->
+    <%= f.input :category_id, :label => '商品分类', :collection => @categories, :checked => @product.category, input_html: { class: 'width-50' } %>
+    <!-- <%= select_tag(:category_id, options_for_select(@categories), :prompt => "Category") %> -->
+    <!-- 商品敘述 -->
+    <%= f.input :description, :label => '商品描述', input_html: { class: 'height-200' } %>
 
+    <!-- 商品售價 -->
+    <%= f.input :price, :label => '商品售价', input_html: { class: 'width-25' } %>
+    <!-- 商品庫存數量 -->
+    <%= f.input :quantity, :label => '商品库存', input_html: { class: 'width-25' } %>
 
+    <!-- 商品隱藏與否 -->
+    <span class="hidden-box"><%= f.input :is_hidden, :label => t('f-hide') %></span>
+    <div class="form-actions">
+        <%= f.submit t('f-submit'), class: 'btn btn-md btn-default' %>
+    </div>
 
-  </div>
-  <%= f.submit "Submit", class: "btn btn-primary", data: { disable_with: "Submiting..."} %>
-<% end %>
+    <% end %>
+</div>

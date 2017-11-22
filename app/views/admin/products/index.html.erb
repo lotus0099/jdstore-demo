@@ -1,43 +1,54 @@
-<div class="row">
-    <div class="col-md-10">
-        <h3>Product List</h3>
-        <div class="pull-right" style="padding-bottom: 20px;">
-            <%= link_to("Add product", new_admin_product_path,class: "btn btn-success") %>
-        </div>
-        <table class="table table-bordered">
-            <tr>
-                <td>#</td>
-                <td>产品图</td>
-                <td>产品类别</td>
-                <td>产品名称</td>
-                <td>产品价格</td>
-                <td>操作选项</td>
-                <td>创建时间</td>
-            </tr>
-            <% @products.each do |product|  %>
-            <tr>
-                <td><%= product.id %></td>
-                <td>
-                    <%= link_to product_path(product) do %>
-                    <% if product.image.present? %>
-                    <% image_tag(product.image.thumb.url,class: "thumbnail") %>
-                <% else %>
-                    <% image_tag('http://placehold.it/200x200&text=No Pic',class: "thumbnail") %>
-                    <% end %>
-                    <% end %>
-                </td>
+<h3>Product List</h3>
+<div class="pull-right" style="padding-bottom: 20px;">
+    <%= link_to("Add product", new_admin_product_path,class: "btn btn-success") %>
+</div>
+<table class="table table-bordered">
+    <tr>
+        <td>商品名称</td>
+        <td>商品品牌</td>
+        <td>商品分类</td>
+        <td>商品类型</td>
+        <td>商品售价价格</td>
+        <td>库存</td>
+        <td>操作选项</td>
+    </tr>
+    <% @products.each do |product|  %>
+    <tr>
+        <td><%= render_product_status(product) %>
+            <%= link_to(product.title, admin_product_path(product)) %></td>
+        <td><%= product.category.name if product.category %></td>
+        <td><%= product.category.category_group.name if product.category %></td>
+        <td>$
+            <%= product.price %></td>
+        <td><%= product.quantity %></td>
+        <td>
+            <div class="action-box">
+                <%= link_to(edit_admin_product_path(product), class: "btn btn-md btn-default") do %>
+                <span class="fa fa-pencil"></span>
+                <% end %>
 
-        
+                <!-- 發佈 / 隱藏 -->
+                <!-- <%= render_product_publish_or_hide(product) %> -->
+                <% if product.is_hidden %>
+                <%= link_to(publish_admin_product_path(product), :method => :post, class: "btn btn-md btn-default show-btn") do %>
+                <span class="fa fa-eye"></span>
+                <% end %>
+            <% else %>
+                <%= link_to(hide_admin_product_path(product), :method => :post, data: { confirm: "確定隱藏該商品？" }, class: "btn btn-md btn-default") do %>
+                <span class="fa fa-eye-slash"></span>
+                <% end %>
+                <% end %>
+            </div>
+        </td>
+        <td><%= link_to('edit',edit_admin_product_path(product),class: "btn-xs btn-primary") %>|<%= link_to('delete',admin_product_path(product),method: :delete,class: "btn-xs btn-danger") %>
+            <%= link_to "向上", move_up_admin_product_path(product), method: :patch %>
+            <%= link_to "向下", move_down_admin_product_path(product), method: :patch %></td>
+    </tr>
+    <% end  %>
+</table>
 
-                <td><%= product.title %></td>
-                <td><%= product.price %></td>
-                <td><%= link_to('edit',edit_admin_product_path(product),class: "btn-xs btn-primary") %>|<%= link_to('delete',admin_product_path(product),method: :delete,class: "btn-xs btn-danger") %>
-                    <%= link_to "向上", move_up_admin_product_path(product), method: :patch %>
-                    <%= link_to "向下", move_down_admin_product_path(product), method: :patch %></td>
-                <td><%= product.created_at %></td>
-
-            </tr>
-            <% end  %>
-        </table>
+<div class="col-md-12 admin-page-box">
+    <div class="text-center">
+        <%= will_paginate @products, renderer: BootstrapPagination::Rails, :previous_label => t('previous-label'), :next_label => t('next-label') %>
     </div>
 </div>
